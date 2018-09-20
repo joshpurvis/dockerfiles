@@ -1,0 +1,17 @@
+# docker stack deploy -c docker-compose.yml blockchain-scrapers
+version: '3.2'
+services:
+  monero:
+    image:
+      joshpurvis/monero
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "18080"
+    - "18081"
+    volumes:
+    - /home/srv/monero:/root/.bitmonero
+    logging:
+      options:
+        max-size: "50m"
